@@ -1,0 +1,94 @@
+body {
+  letter-spacing: 0;
+}
+
+#loading {
+  display: none;
+}
+
+#header {
+  min-height: 76vh;
+}
+
+#header.small-header {
+  min-height: 46vh;
+}
+
+#imgs .item {
+  background-position: center;
+  background-size: cover;
+}
+
+#imgs::before {
+  background: rgba(0, 0, 0, .28);
+}
+
+.logo .artboard {
+  letter-spacing: 0;
+}
+
+.cards .lumos-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  color: #fff;
+}
+
+.lumos-cover.code {
+  background: linear-gradient(135deg, #266dd3, #4ecdc4);
+}
+
+.lumos-cover.projects {
+  background: linear-gradient(135deg, #e9546b, #f7b267);
+}
+
+.lumos-cover.life {
+  background: linear-gradient(135deg, #2a9d8f, #8ab17d);
+}
+
+.cards .lumos-cover .title {
+  color: #fff;
+  text-shadow: 0 .125rem .625rem rgba(0, 0, 0, .25);
+}
+
+.single-column {
+  display: block;
+  max-width: 58rem;
+}
+
+.single-column #main {
+  width: 100%;
+}
+
+.post.block {
+  padding: 2rem;
+}
+
+.post-header .title {
+  margin-top: 0;
+}
+
+.lumos-404 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.lumos-404 img {
+  width: min(18rem, 70vw);
+}
+
+@media (max-width: 767px) {
+  #header {
+    min-height: 68vh;
+  }
+
+  .post.block {
+    padding: 1.25rem;
+  }
+}
