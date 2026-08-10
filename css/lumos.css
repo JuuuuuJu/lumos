@@ -95,23 +95,33 @@ body {
 }
 
 .lumos-cover.code {
-  background: linear-gradient(135deg, #266dd3, #4ecdc4);
+  background:
+    linear-gradient(rgba(0, 0, 0, .26), rgba(0, 0, 0, .26)),
+    url("../images/covers/cover-code.jpg") center / cover no-repeat;
 }
 
 .lumos-cover.projects {
-  background: linear-gradient(135deg, #e9546b, #f7b267);
+  background:
+    linear-gradient(rgba(0, 0, 0, .26), rgba(0, 0, 0, .26)),
+    url("../images/covers/cover-projects.jpg") center / cover no-repeat;
 }
 
 .lumos-cover.life {
-  background: linear-gradient(135deg, #2a9d8f, #8ab17d);
+  background:
+    linear-gradient(rgba(0, 0, 0, .26), rgba(0, 0, 0, .26)),
+    url("../images/covers/cover-journal.jpg") center / cover no-repeat;
 }
 
 .lumos-cover.literature {
-  background: linear-gradient(135deg, #6d597a, #b56576 52%, #e9c46a);
+  background:
+    linear-gradient(rgba(0, 0, 0, .26), rgba(0, 0, 0, .26)),
+    url("../images/covers/cover-literature.jpg") center / cover no-repeat;
 }
 
 .lumos-cover.essay {
-  background: linear-gradient(135deg, #264653, #2a9d8f 55%, #e9c46a);
+  background:
+    linear-gradient(rgba(0, 0, 0, .26), rgba(0, 0, 0, .26)),
+    url("../images/covers/cover-essay.jpg") center / cover no-repeat;
 }
 
 .cards .lumos-cover .title {
@@ -140,14 +150,20 @@ body {
   font-size: 2rem;
   font-weight: 700;
   text-shadow: 0 .125rem .75rem rgba(0, 0, 0, .22);
+  background-position: center;
+  background-size: cover;
 }
 
 .segments.posts > .item .post-cover.literature {
-  background: linear-gradient(135deg, #6d597a, #b56576 52%, #e9c46a);
+  background:
+    linear-gradient(rgba(0, 0, 0, .24), rgba(0, 0, 0, .24)),
+    url("../images/covers/cover-literature.jpg") center / cover no-repeat;
 }
 
 .segments.posts > .item .post-cover.essay {
-  background: linear-gradient(135deg, #264653, #2a9d8f 55%, #e9c46a);
+  background:
+    linear-gradient(rgba(0, 0, 0, .24), rgba(0, 0, 0, .24)),
+    url("../images/covers/cover-essay.jpg") center / cover no-repeat;
 }
 
 .segments .item .info .btn {
@@ -200,6 +216,40 @@ body {
   padding: 2rem;
 }
 
+.post-hero {
+  position: relative;
+  min-height: 22rem;
+  display: flex;
+  align-items: flex-end;
+  margin: -2rem -2rem 2rem;
+  padding: 2rem;
+  overflow: hidden;
+  border-radius: .5rem .5rem 0 0;
+  color: #fff;
+  background:
+    linear-gradient(rgba(0, 0, 0, .28), rgba(0, 0, 0, .46)),
+    var(--post-cover, url("../images/covers/cover-literature.jpg")) center / cover no-repeat;
+}
+
+.post-hero .title {
+  margin: 0 0 .75rem;
+  color: #fff;
+  text-shadow: 0 .2rem .9rem rgba(0, 0, 0, .32);
+}
+
+.post-hero .meta,
+.post-hero .tag-list span {
+  color: #fff;
+}
+
+.post-hero .tag-list span {
+  background: rgba(255, 255, 255, .2);
+}
+
+.post.block .body {
+  min-height: 18rem;
+}
+
 .post-header .title {
   margin-top: 0;
 }
@@ -224,6 +274,12 @@ body {
   }
 
   .post.block {
+    padding: 1.25rem;
+  }
+
+  .post-hero {
+    min-height: 17rem;
+    margin: -1.25rem -1.25rem 1.5rem;
     padding: 1.25rem;
   }
 }

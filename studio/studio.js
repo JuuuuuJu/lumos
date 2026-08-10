@@ -67,15 +67,29 @@
     const slug = slugify($("slug").value || title);
     const category = $("category").value.trim() || "隨筆";
     const tags = $("tags").value.split(",").map((tag) => tag.trim()).filter(Boolean);
+    const cover = $("cover").value.trim() || "images/covers/cover-essay.jpg";
+    const date = new Date().toISOString().slice(0, 10);
     const body = $("content").value
       .split(/\n\s*\n/g)
       .map((paragraph) => `<p>${escapeHtml(paragraph).replaceAll("\n", "<br>")}</p>`)
       .join("\n              ");
     const tagHtml = tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("");
+    const excerpt = $("content").value.replace(/\s+/g, " ").trim().slice(0, 80);
 
     return {
       slug,
       path: `posts/${slug}/index.html`,
+      meta: {
+        title,
+        url: `posts/${slug}/`,
+        date,
+        category,
+        tags,
+        excerpt,
+        cover,
+        coverLabel: tags[0] || category || "文章",
+        coverClass: category.includes("文") ? "literature" : "essay"
+      },
       html: `<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -91,10 +105,12 @@
     <div class="inner single-column">
       <div id="main">
         <article class="post block">
-          <header class="post-header">
-            <h1 class="title">${escapeHtml(title)}</h1>
-            <div class="meta"><span class="item"><i class="ic i-calendar"></i> ${new Date().toISOString().slice(0, 10)}</span> <span class="item"><i class="ic i-flag"></i> ${escapeHtml(category)}</span></div>
+          <header class="post-hero" style="--post-cover:url('../../${escapeHtml(cover)}')">
+            <div>
+              <h1 class="title">${escapeHtml(title)}</h1>
+              <div class="meta"><span class="item"><i class="ic i-calendar"></i> ${date}</span> <span class="item"><i class="ic i-flag"></i> ${escapeHtml(category)}</span></div>
             <div class="tag-list">${tagHtml}</div>
+            </div>
           </header>
           <div class="body md">
               ${body}
@@ -163,6 +179,19 @@
     return result.json();
   }
 
+  async function updatePostIndex(postMeta) {
+    const branch = $("branch").value.trim() || "main";
+    const response = await githubRequest(`contents/data/posts.json?ref=${encodeURIComponent(branch)}`);
+    let posts = [];
+    if (response.status === 200) {
+      const data = await response.json();
+      posts = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(data.content.replace(/\s/g, "")), (c) => c.charCodeAt(0))));
+    }
+    posts = posts.filter((post) => post.url !== postMeta.url);
+    posts.unshift(postMeta);
+    await publishContent("data/posts.json", textToBase64(JSON.stringify(posts, null, 2) + "\n"), `Update post index for ${postMeta.title}`);
+  }
+
   $("unlock").addEventListener("click", () => {
     if ($("password").value === AUTHOR_PASSWORD) {
       lock.classList.add("hidden");
@@ -186,7 +215,9 @@
       setBusy(button, true, "發布中...");
       setStatus(`發布中：${post.path}`);
       await publishContent(post.path, textToBase64(post.html), `Publish ${post.slug}`);
-      setStatus(`發布完成：${post.path}\nGitHub Pages 稍等一下就會更新。`, "success");
+      setStatus(`文章已發布，更新首頁索引中：data/posts.json`);
+      await updatePostIndex(post.meta);
+      setStatus(`發布完成：${post.path}\n首頁索引也已更新。GitHub Pages 稍等一下就會重新部署。`, "success");
     } catch (error) {
       setStatus(`發布失敗：\n${error.message}`, "error");
     } finally {
