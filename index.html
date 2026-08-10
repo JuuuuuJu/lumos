@@ -58,9 +58,9 @@
             <h2 class="divider">置頂介紹</h2>
             <div class="segments sticky">
               <article class="item show">
-                <div class="cover">
+                <div class="cover lumos-intro-cover">
                   <a href="about/" itemprop="url" title="關於 Lumos">
-                    <img src="images/logo.svg" alt="Lumos">
+                    <span class="lumos-mark">Lumos</span>
                   </a>
                 </div>
                 <div class="info">
@@ -84,9 +84,9 @@
             <h2 class="divider">網站區塊</h2>
             <div class="cards">
               <section class="item show">
-                <div class="cover lumos-cover code"><h2 class="title">Code Notes</h2></div>
+                <div class="cover lumos-cover code"><a class="cover-link" href="categories/code/"><h2 class="title">Code Notes</h2></a></div>
                 <div class="info">
-                  <div class="ribbon"><a href="#" title="程式筆記">程式筆記</a></div>
+                  <div class="ribbon"><a href="categories/code/" title="程式筆記">程式筆記</a></div>
                   <div class="inner">
                     <ul class="posts"><li>演算法</li><li>前端 / 後端</li><li>開發工具</li></ul>
                     <div class="meta footer"><span><i class="ic i-file"></i>準備放文章</span></div>
@@ -94,9 +94,37 @@
                 </div>
               </section>
               <section class="item show">
-                <div class="cover lumos-cover projects"><h2 class="title">Projects</h2></div>
+                <div class="cover lumos-cover literature"><a class="cover-link" href="categories/literature/"><h2 class="title">Literature</h2></a></div>
                 <div class="info">
-                  <div class="ribbon"><a href="#" title="作品集">作品集</a></div>
+                  <div class="ribbon"><a href="categories/literature/" title="文學">文學</a></div>
+                  <div class="inner">
+                    <ul class="posts">
+                      <li><a href="posts/new-poem-morning/">晨光短詩</a></li>
+                      <li><a href="posts/classic-poem-note/">古詩試作</a></li>
+                      <li><a href="posts/couplet-spring/">春日對聯</a></li>
+                    </ul>
+                    <div class="tag-list"><span>新詩</span><span>古詩</span><span>對聯</span></div>
+                    <div class="meta footer"><span><i class="ic i-file"></i>3 篇測試文章</span></div>
+                  </div>
+                </div>
+              </section>
+              <section class="item show">
+                <div class="cover lumos-cover essay"><a class="cover-link" href="categories/essay/"><h2 class="title">Essay</h2></a></div>
+                <div class="info">
+                  <div class="ribbon"><a href="categories/essay/" title="隨筆">隨筆</a></div>
+                  <div class="inner">
+                    <ul class="posts">
+                      <li><a href="posts/essay-night-walk/">夜路隨筆</a></li>
+                    </ul>
+                    <div class="tag-list"><span>隨筆</span><span>生活</span></div>
+                    <div class="meta footer"><span><i class="ic i-file"></i>1 篇測試文章</span></div>
+                  </div>
+                </div>
+              </section>
+              <section class="item show">
+                <div class="cover lumos-cover projects"><a class="cover-link" href="categories/projects/"><h2 class="title">Projects</h2></a></div>
+                <div class="info">
+                  <div class="ribbon"><a href="categories/projects/" title="作品集">作品集</a></div>
                   <div class="inner">
                     <ul class="posts"><li>GitHub 專案</li><li>Demo 頁面</li><li>開發紀錄</li></ul>
                     <div class="meta footer"><span><i class="ic i-file"></i>準備放作品</span></div>
@@ -104,15 +132,71 @@
                 </div>
               </section>
               <section class="item show">
-                <div class="cover lumos-cover life"><h2 class="title">Journal</h2></div>
+                <div class="cover lumos-cover life"><a class="cover-link" href="categories/journal/"><h2 class="title">Journal</h2></a></div>
                 <div class="info">
-                  <div class="ribbon"><a href="#" title="生活紀錄">生活紀錄</a></div>
+                  <div class="ribbon"><a href="categories/journal/" title="生活紀錄">生活紀錄</a></div>
                   <div class="inner">
                     <ul class="posts"><li>閱讀心得</li><li>學習回顧</li><li>日常想法</li></ul>
                     <div class="meta footer"><span><i class="ic i-file"></i>準備放紀錄</span></div>
                   </div>
                 </div>
               </section>
+            </div>
+
+            <h2 class="divider">文章列表</h2>
+            <div class="segments posts">
+              <article class="item show" id="literature">
+                <div class="cover"><a href="posts/new-poem-morning/"><span class="post-cover literature">新詩</span></a></div>
+                <div class="info">
+                  <div class="meta">
+                    <span class="item"><span class="icon"><i class="ic i-calendar"></i></span><time datetime="2026-08-10">2026-08-10</time></span>
+                    <span class="item"><span class="icon"><i class="ic i-flag"></i></span><span>文學</span></span>
+                  </div>
+                  <h3><a href="posts/new-poem-morning/">晨光短詩</a></h3>
+                  <div class="excerpt">一首測試用的新詩，用來確認文學分類與標籤呈現。</div>
+                  <div class="tag-list"><span>新詩</span><span>文學</span></div>
+                  <a href="posts/new-poem-morning/" class="btn">more...</a>
+                </div>
+              </article>
+              <article class="item show">
+                <div class="cover"><a href="posts/classic-poem-note/"><span class="post-cover literature">古詩</span></a></div>
+                <div class="info">
+                  <div class="meta">
+                    <span class="item"><span class="icon"><i class="ic i-calendar"></i></span><time datetime="2026-08-10">2026-08-10</time></span>
+                    <span class="item"><span class="icon"><i class="ic i-flag"></i></span><span>文學</span></span>
+                  </div>
+                  <h3><a href="posts/classic-poem-note/">古詩試作</a></h3>
+                  <div class="excerpt">一篇古詩格式的測試文章，方便之後替換成正式作品。</div>
+                  <div class="tag-list"><span>古詩</span><span>文學</span></div>
+                  <a href="posts/classic-poem-note/" class="btn">more...</a>
+                </div>
+              </article>
+              <article class="item show">
+                <div class="cover"><a href="posts/couplet-spring/"><span class="post-cover literature">對聯</span></a></div>
+                <div class="info">
+                  <div class="meta">
+                    <span class="item"><span class="icon"><i class="ic i-calendar"></i></span><time datetime="2026-08-10">2026-08-10</time></span>
+                    <span class="item"><span class="icon"><i class="ic i-flag"></i></span><span>文學</span></span>
+                  </div>
+                  <h3><a href="posts/couplet-spring/">春日對聯</a></h3>
+                  <div class="excerpt">對聯測試文，之後可以放題字、格律或創作練習。</div>
+                  <div class="tag-list"><span>對聯</span><span>文學</span></div>
+                  <a href="posts/couplet-spring/" class="btn">more...</a>
+                </div>
+              </article>
+              <article class="item show" id="essay">
+                <div class="cover"><a href="posts/essay-night-walk/"><span class="post-cover essay">隨筆</span></a></div>
+                <div class="info">
+                  <div class="meta">
+                    <span class="item"><span class="icon"><i class="ic i-calendar"></i></span><time datetime="2026-08-10">2026-08-10</time></span>
+                    <span class="item"><span class="icon"><i class="ic i-flag"></i></span><span>隨筆</span></span>
+                  </div>
+                  <h3><a href="posts/essay-night-walk/">夜路隨筆</a></h3>
+                  <div class="excerpt">一篇隨筆測試文，用來擺生活觀察、想法和短句。</div>
+                  <div class="tag-list"><span>隨筆</span><span>生活</span></div>
+                  <a href="posts/essay-night-walk/" class="btn">more...</a>
+                </div>
+              </article>
             </div>
           </div>
         </div>
@@ -125,14 +209,14 @@
                 <div class="related panel pjax" data-title="系列文章"></div>
                 <div class="overview panel active" data-title="本站概要">
                   <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-                    <img class="image" itemprop="image" alt="Lumos" src="images/logo.svg">
+                    <img class="image lumos-profile-image" itemprop="image" alt="Lumos" src="images/lumos-mark.png">
                     <p class="name" itemprop="name">Lumos</p>
                     <div class="description" itemprop="description">把學到的東西留下來。</div>
                   </div>
                   <nav class="state">
-                    <div class="item posts"><a href="#"><span class="count">0</span> <span class="name">文章</span></a></div>
-                    <div class="item categories"><a href="#"><span class="count">3</span> <span class="name">分類</span></a></div>
-                    <div class="item tags"><a href="#"><span class="count">0</span> <span class="name">標籤</span></a></div>
+                    <div class="item posts"><a href="#"><span class="count">4</span> <span class="name">文章</span></a></div>
+                    <div class="item categories"><a href="#"><span class="count">5</span> <span class="name">分類</span></a></div>
+                    <div class="item tags"><a href="#"><span class="count">5</span> <span class="name">標籤</span></a></div>
                   </nav>
                   <div class="social">
                     <a class="item github" href="https://github.com/lumos" title="GitHub" target="_blank" rel="noopener"><i class="ic i-github"></i></a>

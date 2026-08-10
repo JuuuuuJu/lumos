@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumos Studio</title>
+  <link rel="icon" type="image/ico" sizes="32x32" href="../images/favicon.ico">
+  <link rel="stylesheet" href="studio.css">
+</head>
+<body>
+  <main class="studio">
+    <section id="lock" class="panel lock-panel">
+      <p class="eyebrow">Lumos Studio</p>
+      <h1>作者模式</h1>
+      <p>這是隱藏編輯入口。前端密碼只負責擋一般訪客；真正發布仍需要你的 GitHub token。</p>
+      <label>
+        作者密碼
+        <input id="password" type="password" autocomplete="current-password" placeholder="輸入作者密碼">
+      </label>
+      <button id="unlock" type="button">進入</button>
+      <p id="lockMessage" class="message"></p>
+    </section>
+
+    <section id="workspace" class="workspace hidden">
+      <header class="studio-header">
+        <div>
+          <p class="eyebrow">Author Workspace</p>
+          <h1>自由更新網站</h1>
+        </div>
+        <a href="../">回網站</a>
+      </header>
+      <div id="statusBar" class="status-bar">作者模式已開啟。</div>
+
+      <section class="panel">
+        <h2>GitHub 發布設定</h2>
+        <div class="grid">
+          <label>Owner <input id="owner" value="JuuuuuJu"></label>
+          <label>Repo <input id="repo" value="lumos.github.io"></label>
+          <label>Branch <input id="branch" value="main"></label>
+          <label>Token <input id="token" type="password" placeholder="fine-grained token，不會儲存"></label>
+        </div>
+        <p class="hint">Token 需有此 repo 的 Contents: Read and write 權限。不要把 token commit 進網站。</p>
+      </section>
+
+      <section class="panel">
+        <h2>新增 / 更新文章</h2>
+        <div class="grid">
+          <label>標題 <input id="title" value="新的文章"></label>
+          <label>Slug <input id="slug" value="my-new-post"></label>
+          <label>分類 <input id="category" value="隨筆"></label>
+          <label>Tags <input id="tags" value="隨筆,生活"></label>
+        </div>
+        <label>
+          內文
+          <textarea id="content" rows="12">在這裡自由打字。空一行會變成下一段。</textarea>
+        </label>
+        <div class="actions">
+          <button id="previewPost" type="button">預覽 HTML</button>
+          <button id="publishPost" type="button">發布 / 更新文章</button>
+        </div>
+        <pre id="preview" class="preview"></pre>
+      </section>
+
+      <section class="panel">
+        <h2>換照片</h2>
+        <div class="grid">
+          <label>網站路徑 <input id="assetPath" value="images/cover-literature.jpg"></label>
+          <label>選圖 <input id="assetFile" type="file" accept="image/*"></label>
+        </div>
+        <button id="publishAsset" type="button">上傳 / 替換圖片</button>
+        <p class="hint">上傳後可到 <code>css/lumos.css</code> 把對應區塊改成 <code>url("../images/你的檔名.jpg")</code>。</p>
+      </section>
+
+      <section class="panel">
+        <h2>狀態</h2>
+        <pre id="status" class="status">作者模式已開啟。</pre>
+      </section>
+    </section>
+  </main>
+  <script src="studio.js"></script>
+</body>
+</html>
