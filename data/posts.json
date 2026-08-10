@@ -1,10 +1,26 @@
 [
   {
+    "title": "測試again",
+    "url": "posts/newpost2/",
+    "date": "2026-08-10",
+    "category": "新詩",
+    "tags": [
+      "新詩"
+    ],
+    "excerpt": "笑死，預選網站做不完怎麼會打詩",
+    "cover": "images/mokke.jpg",
+    "coverLabel": "新詩",
+    "coverClass": "essay"
+  },
+  {
     "title": "新的文章",
     "url": "posts/my-new-post/",
     "date": "2026-08-10",
     "category": "隨筆",
-    "tags": ["隨筆", "生活"],
+    "tags": [
+      "隨筆",
+      "生活"
+    ],
     "excerpt": "在這裡自由打字。空一行會變成下一段。測試測試",
     "cover": "images/covers/cover-essay.jpg",
     "coverLabel": "隨筆",
@@ -15,7 +31,10 @@
     "url": "posts/new-poem-morning/",
     "date": "2026-08-10",
     "category": "文學",
-    "tags": ["新詩", "文學"],
+    "tags": [
+      "新詩",
+      "文學"
+    ],
     "excerpt": "一首測試用的新詩，用來確認文學分類與標籤呈現。",
     "cover": "images/covers/cover-literature.jpg",
     "coverLabel": "新詩",
@@ -26,7 +45,10 @@
     "url": "posts/classic-poem-note/",
     "date": "2026-08-10",
     "category": "文學",
-    "tags": ["古詩", "文學"],
+    "tags": [
+      "古詩",
+      "文學"
+    ],
     "excerpt": "一篇古詩格式的測試文章，方便之後替換成正式作品。",
     "cover": "images/covers/cover-literature.jpg",
     "coverLabel": "古詩",
@@ -37,7 +59,10 @@
     "url": "posts/couplet-spring/",
     "date": "2026-08-10",
     "category": "文學",
-    "tags": ["對聯", "文學"],
+    "tags": [
+      "對聯",
+      "文學"
+    ],
     "excerpt": "對聯測試文，之後可以放題字、格律或創作練習。",
     "cover": "images/covers/cover-literature.jpg",
     "coverLabel": "對聯",
@@ -48,7 +73,10 @@
     "url": "posts/essay-night-walk/",
     "date": "2026-08-10",
     "category": "隨筆",
-    "tags": ["隨筆", "生活"],
+    "tags": [
+      "隨筆",
+      "生活"
+    ],
     "excerpt": "一篇隨筆測試文，用來擺生活觀察、想法和短句。",
     "cover": "images/covers/cover-essay.jpg",
     "coverLabel": "隨筆",
