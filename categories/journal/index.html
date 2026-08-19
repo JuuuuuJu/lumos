@@ -1,26 +1,36 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
   <link rel="icon" type="image/ico" sizes="32x32" href="../../images/favicon.ico">
   <link rel="stylesheet" href="../../css/app.css?v=0.2.5">
-  <link rel="stylesheet" href="../../css/lumos.css">
+  <link rel="stylesheet" href="../../css/lumos.css?v=1.5">
   <title>生活紀錄 | Lumos</title>
 </head>
 <body class="loaded">
   <main>
     <div class="inner single-column">
       <div id="main">
-        <article class="post block">
-          <header class="post-header"><h1 class="title">生活紀錄</h1></header>
-          <div class="body md">
-            <p>這裡之後可以放閱讀心得、學習回顧和日常想法。</p>
-          </div>
-          <p><a class="btn" href="../../">回首頁</a></p>
+        <article class="post block archive-page" data-view="category" data-category="生活紀錄" data-title="生活紀錄">
+          <header class="post-hero" style="--post-cover:url('../../images/covers/cover-journal.jpg')">
+            <div><h1 class="title" data-page-title>生活紀錄</h1><div class="meta"><span class="item"><i class="ic i-file"></i> <span data-result-count>讀取中</span></span></div></div>
+          </header>
+          <div class="archive-tools"><input data-archive-search type="search" placeholder="搜尋生活紀錄"></div>
+          <div class="segments posts compact" data-archive-list></div>
+          <nav class="post-actions"><a class="btn" href="../../">回首頁</a><a class="btn ghost" href="../">全部分類</a></nav>
         </article>
       </div>
     </div>
   </main>
+  <script src="../../js/site.js?v=1.5"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+

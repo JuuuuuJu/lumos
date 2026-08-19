@@ -1,16 +1,16 @@
-[
+﻿[
   {
     "title": "測試again",
     "url": "posts/newpost2/",
     "date": "2026-08-10",
-    "category": "新詩",
+    "category": "文學",
     "tags": [
       "新詩"
     ],
     "excerpt": "笑死，預選網站做不完怎麼會打詩",
     "cover": "images/mokke.jpg",
     "coverLabel": "新詩",
-    "coverClass": "essay"
+    "coverClass": "literature"
   },
   {
     "title": "新的文章",
@@ -83,3 +83,4 @@
     "coverClass": "essay"
   }
 ]
+

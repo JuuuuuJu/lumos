@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
@@ -9,9 +9,9 @@
   <link rel="icon" type="image/ico" sizes="32x32" href="images/favicon.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:300,400,700%7CNoto%20Serif%20TC:300,400,700%7CInconsolata:400,700&display=swap">
   <link rel="stylesheet" href="css/app.css?v=0.2.5">
-  <link rel="stylesheet" href="css/lumos.css">
+  <link rel="stylesheet" href="css/lumos.css?v=1.5">
   <link rel="canonical" href="https://lumos.github.io/">
-  <title>Lumos = Keep Learning, Keep Building</title>
+  <title>Lumos | Keep writing</title>
 </head>
 <body class="loaded" itemscope itemtype="http://schema.org/WebPage">
   <div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div>
@@ -59,7 +59,7 @@
           <div class="index wrap">
             <h2 class="divider">置頂介紹</h2>
             <div class="segments sticky">
-              <article class="item show">
+              <article class="item show intro-card">
                 <div class="cover lumos-intro-cover">
                   <a href="about/" itemprop="url" title="關於 Lumos">
                     <span class="lumos-mark">Lumos</span>
@@ -75,71 +75,81 @@
                     <ul>
                       <li><code>學習筆記</code>：整理程式、專案、課程與解題紀錄。</li>
                       <li><code>作品集</code>：放上可以展示的 side project 與研究成果。</li>
-                      <li><code>生活紀錄</code>：保留一些思考、閱讀和成長軌跡。</li>
+                    <li><code>生活紀錄</code>：保留一些思考、閱讀和成長軌跡。</li>
+                      <li><code>許願池</code>：可以自由指定想看的創作題目。</li>
                     </ul>
                   </div>
-                  <a href="about/" itemprop="url" title="關於 Lumos" class="btn">more...</a>
                 </div>
               </article>
             </div>
 
             <h2 class="divider">網站區塊</h2>
             <div class="cards">
-              <section class="item show">
+              <section class="item show" data-card-category="程式筆記">
                 <div class="cover lumos-cover code"><a class="cover-link" href="categories/code/"><h2 class="title">Code Notes</h2></a></div>
                 <div class="info">
                   <div class="ribbon"><a href="categories/code/" title="程式筆記">程式筆記</a></div>
                   <div class="inner">
-                    <ul class="posts"><li>演算法</li><li>前端 / 後端</li><li>開發工具</li></ul>
-                    <div class="meta footer"><span><i class="ic i-file"></i>準備放文章</span></div>
+                    <ul class="posts" data-card-posts><li>演算法</li><li>前端 / 後端</li><li>開發工具</li></ul>
+                    <div class="meta footer"><span><i class="ic i-file"></i><span data-card-count>準備放文章</span></span></div>
                   </div>
                 </div>
               </section>
-              <section class="item show">
+              <section class="item show" data-card-category="文學">
                 <div class="cover lumos-cover literature"><a class="cover-link" href="categories/literature/"><h2 class="title">Literature</h2></a></div>
                 <div class="info">
                   <div class="ribbon"><a href="categories/literature/" title="文學">文學</a></div>
                   <div class="inner">
-                    <ul class="posts">
+                    <ul class="posts" data-card-posts>
                       <li><a href="posts/new-poem-morning/">晨光短詩</a></li>
                       <li><a href="posts/classic-poem-note/">古詩試作</a></li>
                       <li><a href="posts/couplet-spring/">春日對聯</a></li>
                     </ul>
                     <div class="tag-list"><span>新詩</span><span>古詩</span><span>對聯</span></div>
-                    <div class="meta footer"><span><i class="ic i-file"></i>3 篇測試文章</span></div>
+                    <div class="meta footer"><span><i class="ic i-file"></i><span data-card-count>3 篇測試文章</span></span></div>
                   </div>
                 </div>
               </section>
-              <section class="item show">
+              <section class="item show" data-card-category="隨筆">
                 <div class="cover lumos-cover essay"><a class="cover-link" href="categories/essay/"><h2 class="title">Essay</h2></a></div>
                 <div class="info">
                   <div class="ribbon"><a href="categories/essay/" title="隨筆">隨筆</a></div>
                   <div class="inner">
-                    <ul class="posts">
+                    <ul class="posts" data-card-posts>
                       <li><a href="posts/essay-night-walk/">夜路隨筆</a></li>
                     </ul>
                     <div class="tag-list"><span>隨筆</span><span>生活</span></div>
-                    <div class="meta footer"><span><i class="ic i-file"></i>1 篇測試文章</span></div>
+                    <div class="meta footer"><span><i class="ic i-file"></i><span data-card-count>1 篇測試文章</span></span></div>
                   </div>
                 </div>
               </section>
-              <section class="item show">
+              <section class="item show" data-card-category="作品集">
                 <div class="cover lumos-cover projects"><a class="cover-link" href="categories/projects/"><h2 class="title">Projects</h2></a></div>
                 <div class="info">
                   <div class="ribbon"><a href="categories/projects/" title="作品集">作品集</a></div>
                   <div class="inner">
-                    <ul class="posts"><li>GitHub 專案</li><li>Demo 頁面</li><li>開發紀錄</li></ul>
-                    <div class="meta footer"><span><i class="ic i-file"></i>準備放作品</span></div>
+                    <ul class="posts" data-card-posts><li>GitHub 專案</li><li>Demo 頁面</li><li>開發紀錄</li></ul>
+                    <div class="meta footer"><span><i class="ic i-file"></i><span data-card-count>準備放作品</span></span></div>
                   </div>
                 </div>
               </section>
-              <section class="item show">
+              <section class="item show" data-card-category="生活紀錄">
                 <div class="cover lumos-cover life"><a class="cover-link" href="categories/journal/"><h2 class="title">Journal</h2></a></div>
                 <div class="info">
                   <div class="ribbon"><a href="categories/journal/" title="生活紀錄">生活紀錄</a></div>
                   <div class="inner">
-                    <ul class="posts"><li>閱讀心得</li><li>學習回顧</li><li>日常想法</li></ul>
-                    <div class="meta footer"><span><i class="ic i-file"></i>準備放紀錄</span></div>
+                    <ul class="posts" data-card-posts><li>閱讀心得</li><li>學習回顧</li><li>日常想法</li></ul>
+                    <div class="meta footer"><span><i class="ic i-file"></i><span data-card-count>準備放紀錄</span></span></div>
+                  </div>
+                </div>
+              </section>
+              <section class="item show">
+                <div class="cover lumos-cover wish"><a class="cover-link" href="wish/"><h2 class="title">Wish Pool</h2></a></div>
+                <div class="info">
+                  <div class="ribbon"><a href="wish/" title="許願池">許願池</a></div>
+                  <div class="inner">
+                    <ul class="posts"><li>指定創作形式</li><li>留下題目與風格</li><li>補充限制或情境</li></ul>
+                    <div class="meta footer"><span><i class="ic i-feather"></i>內容私下送出</span></div>
                   </div>
                 </div>
               </section>
@@ -213,22 +223,23 @@
                   <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
                     <img class="image lumos-profile-image" itemprop="image" alt="Lumos" src="images/lumos-mark.png">
                     <p class="name" itemprop="name">Lumos</p>
-                    <div class="description" itemprop="description">把學到的東西留下來。</div>
+                    <div class="description" itemprop="description">今天還活著沒有在MKS睡死</div>
                   </div>
                   <nav class="state">
-                    <div class="item posts"><a href="#"><span class="count">5</span> <span class="name">文章</span></a></div>
-                    <div class="item categories"><a href="#"><span class="count">5</span> <span class="name">分類</span></a></div>
-                    <div class="item tags"><a href="#"><span class="count">5</span> <span class="name">標籤</span></a></div>
+                    <div class="item posts"><a href="archives/"><span class="count">5</span> <span class="name">文章</span></a></div>
+                    <div class="item categories"><a href="categories/"><span class="count">5</span> <span class="name">分類</span></a></div>
+                    <div class="item tags"><a href="tags/"><span class="count">5</span> <span class="name">標籤</span></a></div>
                   </nav>
                   <div class="social">
-                    <a class="item github" href="https://github.com/lumos" title="GitHub" target="_blank" rel="noopener"><i class="ic i-github"></i></a>
-                    <a class="item email" href="mailto:your-email@example.com" title="Email"><i class="ic i-envelope"></i></a>
+                    <a class="item github" href="https://github.com/JuuuuuJu" title="GitHub" target="_blank" rel="noopener"><i class="ic i-github"></i></a>
+                    <a class="item email" href="mailto:y5c0901720@gmail.com" title="Email"><i class="ic i-envelope"></i></a>
                   </div>
                   <ul class="menu">
                     <li class="item active"><a href="./" rel="section"><i class="ic i-home"></i>首頁</a></li>
                     <li class="item"><a href="about/" rel="section"><i class="ic i-user"></i>關於</a></li>
-                    <li class="item"><a href="#" rel="section"><i class="ic i-feather"></i>文章</a></li>
-                    <li class="item"><a href="#" rel="section"><i class="ic i-star"></i>作品</a></li>
+                    <li class="item"><a href="archives/" rel="section"><i class="ic i-feather"></i>文章</a></li>
+                    <li class="item"><a href="projects/" rel="section"><i class="ic i-star"></i>作品</a></li>
+                    <li class="item"><a href="wish/" rel="section"><i class="ic i-feather"></i>許願池</a></li>
                   </ul>
                 </div>
               </div>
@@ -250,6 +261,14 @@
       </div>
     </footer>
   </div>
-  <script src="js/site.js"></script>
+  <script src="js/site.js?v=1.5"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+

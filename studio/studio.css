@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #f6f7f9;
   --panel: #fff;
   --text: #202832;
@@ -105,7 +105,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: .4rem;
@@ -136,10 +137,47 @@ button:disabled {
   opacity: .65;
 }
 
+button.secondary {
+  color: #1f4a74;
+  background: #eaf4ff;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) auto auto auto;
+  align-items: end;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+
+.checkline {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: .9rem;
+}
+
+.checkline input {
+  width: auto;
+}
+
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: .75rem;
   margin-top: 1rem;
+}
+
+.asset-box {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px dashed rgba(18, 184, 215, .45);
+  border-radius: .5rem;
+  background: rgba(232, 244, 255, .45);
+}
+
+.asset-box h3 {
+  margin: 0 0 1rem;
 }
 
 .hint,
@@ -147,8 +185,52 @@ button:disabled {
   color: var(--muted);
 }
 
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  border-radius: 999px;
+  padding: .35rem .7rem;
+  color: #17406f;
+  background: rgba(232, 244, 255, .96);
+  font-size: .85rem;
+  font-weight: 700;
+}
+
+.inbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.inbox-list {
+  display: grid;
+  gap: .75rem;
+}
+
+.inbox-card,
+.empty-note {
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  padding: .9rem;
+  background: #f9fbfd;
+}
+
+.inbox-card strong {
+  display: block;
+  margin-bottom: .4rem;
+}
+
+.inbox-card p,
+.empty-note {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .preview,
-.status {
+.status,
+.mini-preview {
   max-height: 22rem;
   overflow: auto;
   padding: 1rem;
@@ -158,14 +240,39 @@ button:disabled {
   white-space: pre-wrap;
 }
 
+.mini-preview {
+  max-height: 12rem;
+  margin: 1rem 0 0;
+  font-size: .86rem;
+}
+
+.preview-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.preview-frame {
+  width: 100%;
+  min-height: 22rem;
+  border: 1px solid var(--line);
+  border-radius: .4rem;
+  background: #fff;
+}
+
 .hidden {
   display: none;
 }
 
 @media (max-width: 720px) {
   .grid,
-  .studio-header {
+  .studio-header,
+  .toolbar,
+  .inbox-grid,
+  .preview-layout {
     grid-template-columns: 1fr;
     display: grid;
   }
 }
+

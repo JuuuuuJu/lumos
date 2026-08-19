@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lumos Studio</title>
+  <title>Lumos 管理台</title>
   <link rel="icon" type="image/ico" sizes="32x32" href="../images/favicon.ico">
-  <link rel="stylesheet" href="studio.css">
+  <link rel="stylesheet" href="studio.css?v=1.3">
 </head>
 <body>
   <main class="studio">
     <section id="lock" class="panel lock-panel">
-      <p class="eyebrow">Lumos Studio</p>
+      <p class="eyebrow">Lumos Admin</p>
       <h1>作者模式</h1>
       <p>這是隱藏編輯入口。前端密碼只負責擋一般訪客；真正發布仍需要你的 GitHub token。</p>
       <label>
@@ -43,23 +43,67 @@
       </section>
 
       <section class="panel">
-        <h2>新增 / 更新文章</h2>
+        <h2>文章管理</h2>
+        <div class="toolbar">
+          <label>
+            既有文章
+            <select id="existingPost"><option value="">新增文章</option></select>
+          </label>
+          <button id="newPost" type="button" class="secondary">清空，新增文章</button>
+          <button id="saveDraft" type="button" class="secondary">儲存草稿</button>
+          <button id="loadDraft" type="button" class="secondary">載入草稿</button>
+        </div>
         <div class="grid">
           <label>標題 <input id="title" value="新的文章"></label>
           <label>Slug <input id="slug" value="my-new-post"></label>
           <label>分類 <input id="category" value="隨筆"></label>
           <label>Tags <input id="tags" value="隨筆,生活"></label>
+          <label>日期 <input id="date" type="date"></label>
           <label>章首圖 <input id="cover" value="images/covers/cover-essay.jpg"></label>
         </div>
+        <label>
+          摘要
+          <input id="excerpt" placeholder="不填的話會從內文自動截取">
+        </label>
+        <label>
+          內文格式
+          <select id="contentMode">
+            <option value="markdown">Markdown</option>
+            <option value="html">HTML</option>
+          </select>
+        </label>
         <label>
           內文
           <textarea id="content" rows="12">在這裡自由打字。空一行會變成下一段。</textarea>
         </label>
+        <div class="asset-box">
+          <h3>文章素材包</h3>
+          <div class="grid">
+            <label>ZIP 素材包 <input id="packageZip" type="file" accept=".zip,application/zip"></label>
+            <label>多檔 / 解壓資料夾 <input id="packageFiles" type="file" multiple webkitdirectory></label>
+            <label>素材放置路徑 <input id="assetBase" placeholder="預設 posts/slug/assets/"></label>
+          </div>
+          <div class="actions">
+            <button id="scanPackage" type="button" class="secondary">整理素材</button>
+            <button id="usePackageMarkdown" type="button" class="secondary">使用包內 Markdown</button>
+            <button id="insertAssetSnippet" type="button" class="secondary">插入素材連結</button>
+          </div>
+          <p class="hint">圖片、CSV、附件會跟文章一起發布；連結會指向同篇文章底下的 <code>assets/</code>。</p>
+          <pre id="assetSummary" class="mini-preview">尚未整理素材。</pre>
+        </div>
+        <label class="checkline">
+          <input id="allowOverwrite" type="checkbox">
+          允許覆蓋同 slug 的既有文章
+        </label>
         <div class="actions">
-          <button id="previewPost" type="button">預覽 HTML</button>
+          <button id="previewPost" type="button">預覽文章</button>
           <button id="publishPost" type="button">發布 / 更新文章</button>
         </div>
-        <pre id="preview" class="preview"></pre>
+        <p class="hint">發布文章會把文章 HTML 和 <code>data/posts.json</code> 合成同一個 commit。未選既有文章時，預設會阻止同 slug 覆蓋。</p>
+        <div class="preview-layout">
+          <iframe id="previewFrame" class="preview-frame" title="文章預覽"></iframe>
+          <pre id="preview" class="preview"></pre>
+        </div>
       </section>
 
       <section class="panel">
@@ -69,7 +113,26 @@
           <label>選圖 <input id="assetFile" type="file" accept="image/*"></label>
         </div>
         <button id="publishAsset" type="button">上傳 / 替換圖片</button>
-        <p class="hint">上傳後可到 <code>css/lumos.css</code> 把對應區塊改成 <code>url("../images/你的檔名.jpg")</code>。</p>
+        <p class="hint">建議新圖片放在 <code>images/uploads/</code>。上傳成功後會自動填到文章章首圖欄位。</p>
+      </section>
+
+      <section class="panel">
+        <h2>社群收件匣</h2>
+        <div class="toolbar">
+          <button id="refreshCommunity" type="button" class="secondary">重新整理</button>
+          <span id="communityMode" class="pill">讀取中</span>
+        </div>
+        <div class="inbox-grid">
+          <div>
+            <h3>許願池</h3>
+            <div id="wishInbox" class="inbox-list"></div>
+          </div>
+          <div>
+            <h3>公開評論</h3>
+            <div id="commentInbox" class="inbox-list"></div>
+          </div>
+        </div>
+        <p class="hint">本機模式只能看到同一台瀏覽器送出的測試資料；正式公開同步需要設定 community backend。</p>
       </section>
 
       <section class="panel">
@@ -78,6 +141,17 @@
       </section>
     </section>
   </main>
-  <script src="studio.js"></script>
+  <script src="local-config.js"></script>
+  <script src="../js/community.js"></script>
+  <script src="vendor/jszip.min.js"></script>
+  <script src="studio.js?v=1.3"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+

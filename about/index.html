@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +7,7 @@
   <link rel="icon" type="image/ico" sizes="32x32" href="../images/favicon.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:300,400,700%7CNoto%20Serif%20TC:300,400,700%7CInconsolata:400,700&display=swap">
   <link rel="stylesheet" href="../css/app.css?v=0.2.5">
-  <link rel="stylesheet" href="../css/lumos.css">
+  <link rel="stylesheet" href="../css/lumos.css?v=1.5">
   <title>About | Lumos</title>
 </head>
 <body class="loaded">
@@ -29,32 +29,44 @@
           </div>
         </nav>
       </div>
-      <div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=80"></li></ul></div>
+      <div id="imgs" class="pjax"><ul><li class="item" data-background-image="../images/covers/cover-code.jpg"></li></ul></div>
     </header>
     <main>
       <div class="inner single-column">
         <div id="main" class="pjax">
           <article class="post block">
-            <header class="post-header">
-              <h1 class="title">關於 Lumos</h1>
-              <div class="meta"><span class="item"><i class="ic i-calendar"></i> 2026-08-10</span></div>
+            <header class="post-hero" style="--post-cover:url('../images/covers/cover-code.jpg')">
+              <div>
+                <h1 class="title">關於 Lumos</h1>
+                <div class="meta"><span class="item"><i class="ic i-calendar"></i> 2026-08-10</span></div>
+              </div>
             </header>
             <div class="body md">
-              <p>這裡先放一版個人網站的自我介紹。你可以把它改成姓名、學校、專長、正在做的專案，以及想讓訪客第一眼知道的事情。</p>
-              <h2>可以放的內容</h2>
+              <p>Lumos 是用來保存學習、創作和專案紀錄的個人網站。這裡會慢慢放下程式筆記、作品集、文學練習和一些生活裡值得留下的想法。</p>
+              <h2>網站會放什麼</h2>
               <ul>
-                <li>學習方向：例如演算法、AI、網頁開發、嵌入式系統。</li>
-                <li>作品集：放 GitHub repo、demo、截圖或專案心得。</li>
-                <li>聯絡方式：GitHub、Email、LinkedIn 或社群連結。</li>
+                <li>學習筆記：程式、工具、課程、解題和踩坑紀錄。</li>
+                <li>文學創作：新詩、古詩、對聯和文字練習。</li>
+                <li>作品集：GitHub 專案、Demo、設計想法與開發心得。</li>
+                <li>生活紀錄：閱讀、回顧、短句和日常觀察。</li>
               </ul>
-              <p>這一頁目前是靜態 HTML，適合先上 GitHub Pages。之後如果文章變多，再改成 Hexo、Hugo 或 Astro 也很順。</p>
+              <p>這個網站目前是靜態 GitHub Pages，但已經整理成資料驅動：新增文章後，首頁、分類、標籤和文章列表會一起更新。</p>
             </div>
+            <nav class="post-actions"><a class="btn" href="../">回首頁</a><a class="btn ghost" href="../archives/">看文章</a></nav>
           </article>
         </div>
       </div>
     </main>
     <footer id="footer"><div class="inner"><div class="status"><div class="copyright">&copy; 2026 Lumos</div></div></div></footer>
   </div>
-  <script src="../js/site.js"></script>
+  <script src="../js/site.js?v=1.5"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+

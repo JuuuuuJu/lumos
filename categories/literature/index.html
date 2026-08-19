@@ -1,33 +1,36 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
   <link rel="icon" type="image/ico" sizes="32x32" href="../../images/favicon.ico">
   <link rel="stylesheet" href="../../css/app.css?v=0.2.5">
-  <link rel="stylesheet" href="../../css/lumos.css">
+  <link rel="stylesheet" href="../../css/lumos.css?v=1.5">
   <title>文學 | Lumos</title>
 </head>
 <body class="loaded">
   <main>
     <div class="inner single-column">
       <div id="main">
-        <article class="post block">
-          <header class="post-header">
-            <h1 class="title">文學</h1>
-            <div class="tag-list"><span>新詩</span><span>古詩</span><span>對聯</span></div>
+        <article class="post block archive-page" data-view="category" data-category="文學" data-title="文學">
+          <header class="post-hero" style="--post-cover:url('../../images/covers/cover-literature.jpg')">
+            <div><h1 class="title" data-page-title>文學</h1><div class="meta"><span class="item"><i class="ic i-file"></i> <span data-result-count>讀取中</span></span></div><div class="tag-list"><a href="../../tags/?tag=新詩">新詩</a><a href="../../tags/?tag=古詩">古詩</a><a href="../../tags/?tag=對聯">對聯</a></div></div>
           </header>
-          <div class="body md">
-            <ul>
-              <li><a href="../../posts/new-poem-morning/">晨光短詩</a></li>
-              <li><a href="../../posts/classic-poem-note/">古詩試作</a></li>
-              <li><a href="../../posts/couplet-spring/">春日對聯</a></li>
-            </ul>
-          </div>
-          <p><a class="btn" href="../../">回首頁</a></p>
+          <div class="archive-tools"><input data-archive-search type="search" placeholder="搜尋文學文章"></div>
+          <div class="segments posts compact" data-archive-list></div>
+          <nav class="post-actions"><a class="btn" href="../../">回首頁</a><a class="btn ghost" href="../">全部分類</a></nav>
         </article>
       </div>
     </div>
   </main>
+  <script src="../../js/site.js?v=1.5"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
