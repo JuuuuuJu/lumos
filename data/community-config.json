@@ -1,7 +1,6 @@
 ﻿{
-  "backend": "local",
+  "backend": "http",
   "siteId": "lumos",
-  "endpoint": "",
-  "notice": "目前是本機測試模式。部署後若要跨訪客同步留言與私密許願，請設定後端 endpoint。"
+  "endpoint": "https://lumos-community.y5c0901720.workers.dev"
 }
 
