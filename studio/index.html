@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lumos 管理台</title>
+  <title>Lumos 更新工具</title>
   <link rel="icon" type="image/ico" sizes="32x32" href="../images/favicon.ico">
-  <link rel="stylesheet" href="studio.css?v=1.3">
+  <link rel="stylesheet" href="studio.css?v=1.4">
 </head>
 <body>
   <main class="studio">
     <section id="lock" class="panel lock-panel">
-      <p class="eyebrow">Lumos Admin</p>
+      <p class="eyebrow">Lumos Writer</p>
       <h1>作者模式</h1>
-      <p>這是隱藏編輯入口。前端密碼只負責擋一般訪客；真正發布仍需要你的 GitHub token。</p>
+      <p>這裡不保存真正權限。外出使用時，進入後手動填 GitHub token；本機使用時可以由 local-config.js 預填部分設定。</p>
       <label>
-        作者密碼
-        <input id="password" type="password" autocomplete="current-password" placeholder="輸入作者密碼">
+        進入密碼
+        <input id="password" type="password" autocomplete="current-password" placeholder="有設定時才需要">
       </label>
       <button id="unlock" type="button">進入</button>
       <p id="lockMessage" class="message"></p>
@@ -35,11 +35,20 @@
         <h2>GitHub 發布設定</h2>
         <div class="grid">
           <label>Owner <input id="owner" value="JuuuuuJu"></label>
-          <label>Repo <input id="repo" value="lumos.github.io"></label>
+          <label>Repo <input id="repo" value="lumos"></label>
           <label>Branch <input id="branch" value="main"></label>
           <label>Token <input id="token" type="password" placeholder="fine-grained token，不會儲存"></label>
         </div>
         <p class="hint">Token 需有此 repo 的 Contents: Read and write 權限。不要把 token commit 進網站。</p>
+      </section>
+
+      <section class="panel">
+        <h2>Cloudflare 同步設定</h2>
+        <div class="grid">
+          <label>Worker endpoint <input id="communityEndpoint" placeholder="https://lumos-community.y5c0901720.workers.dev"></label>
+          <label>管理 token <input id="communityAdminToken" type="password" placeholder="Cloudflare Worker 的 ADMIN_TOKEN"></label>
+        </div>
+        <p class="hint">公開評論不需要管理 token；讀取私密許願與完整評論資料時才需要。外出使用請手動填，頁面不會把它寫進 GitHub。</p>
       </section>
 
       <section class="panel">
@@ -144,9 +153,10 @@
   <script src="local-config.js"></script>
   <script src="../js/community.js"></script>
   <script src="vendor/jszip.min.js"></script>
-  <script src="studio.js?v=1.3"></script>
+  <script src="studio.js?v=1.4"></script>
 </body>
 </html>
+
 
 
 

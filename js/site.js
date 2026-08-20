@@ -50,6 +50,35 @@
     return siteUrl("tags/?tag=" + encodeURIComponent(tag));
   }
 
+  function fallbackCoverFor(category, coverClass) {
+    var key = String(coverClass || category || "").toLowerCase();
+    if (key.indexOf("code") !== -1 || key.indexOf("程式") !== -1) return "images/covers/cover-code.jpg";
+    if (key.indexOf("project") !== -1 || key.indexOf("作品") !== -1) return "images/covers/cover-projects.jpg";
+    if (key.indexOf("life") !== -1 || key.indexOf("journal") !== -1 || key.indexOf("生活") !== -1 || key.indexOf("紀錄") !== -1) return "images/covers/cover-journal.jpg";
+    if (key.indexOf("literature") !== -1 || key.indexOf("文") !== -1 || key.indexOf("詩") !== -1 || key.indexOf("對聯") !== -1) return "images/covers/cover-literature.jpg";
+    return "images/covers/cover-essay.jpg";
+  }
+
+  function initPostHeroFallback() {
+    var hero = document.querySelector(".post-full-hero[data-post-cover]");
+    if (!hero) return;
+    var cover = hero.getAttribute("data-post-cover");
+    var fallback = fallbackCoverFor(hero.getAttribute("data-category"), hero.getAttribute("data-cover-class"));
+    hero.style.setProperty("--post-fallback-cover", "url('" + siteUrl(fallback) + "')");
+    if (!cover) {
+      hero.classList.add("is-fallback");
+      return;
+    }
+    var img = new Image();
+    img.onload = function () {
+      hero.classList.remove("is-fallback");
+    };
+    img.onerror = function () {
+      hero.classList.add("is-fallback");
+    };
+    img.src = siteUrl(cover);
+  }
+
   function tagList(tags) {
     return (tags || []).map(function (tag) {
       return "<a href=\"" + tagUrl(tag) + "\">" + escapeHtml(tag) + "</a>";
@@ -191,9 +220,11 @@
       if (postList) postList.innerHTML = "<div class=\"empty-state\">讀取文章資料失敗：" + escapeHtml(error.message) + "</div>";
     });
 
+  initPostHeroFallback();
+
   if (/\/posts\/[^/]+\//.test(window.location.pathname) || document.querySelector("[data-view='wish']")) {
     var communityScript = document.createElement("script");
-    communityScript.src = siteUrl("js/community.js?v=1.5");
+    communityScript.src = siteUrl("js/community.js?v=1.6");
     communityScript.defer = true;
     document.body.appendChild(communityScript);
   }

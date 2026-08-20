@@ -5,21 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
   <link rel="icon" type="image/ico" sizes="32x32" href="../../images/favicon.ico">
   <link rel="stylesheet" href="../../css/app.css?v=0.2.5">
-  <link rel="stylesheet" href="../../css/lumos.css?v=1.5">
+  <link rel="stylesheet" href="../../css/lumos.css?v=1.6">
   <title>新的文章 | Lumos</title>
 </head>
-<body class="loaded">
+<body class="loaded post-page">
+  <header class="post-full-hero" style="--post-cover:url('../../images/covers/cover-essay.jpg')" data-post-cover="images/covers/cover-essay.jpg" data-category="隨筆" data-cover-class="essay">
+    <div class="hero-copy">
+      <h1 class="title">新的文章</h1>
+      <div class="meta"><span class="item"><i class="ic i-calendar"></i> 2026-08-10</span> <span class="item"><i class="ic i-flag"></i> 隨筆</span></div>
+      <div class="tag-list"><a href="../../tags/?tag=%E9%9A%A8%E7%AD%86">隨筆</a><a href="../../tags/?tag=%E7%94%9F%E6%B4%BB">生活</a></div>
+    </div>
+    <div class="hero-waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+        <g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g>
+      </svg>
+    </div>
+  </header>
   <main>
     <div class="inner single-column">
       <div id="main">
         <article class="post block">
-          <header class="post-hero" style="--post-cover:url('../../images/covers/cover-essay.jpg')">
-            <div>
-              <h1 class="title">新的文章</h1>
-              <div class="meta"><span class="item"><i class="ic i-calendar"></i> 2026-08-10</span> <span class="item"><i class="ic i-flag"></i> 隨筆</span></div>
-              <div class="tag-list"><span>隨筆</span><span>生活</span></div>
-            </div>
-          </header>
           <div class="body md">
               <p>在這裡自由打字。空一行會變成下一段。<br>測試測試</p>
               <p>cout &lt;&lt; &quot;Hello world!\n&quot;;</p>
@@ -29,9 +35,10 @@
       </div>
     </div>
   </main>
-  <script src="../../js/site.js?v=1.5"></script>
+  <script src="../../js/site.js?v=1.6"></script>
 </body>
 </html>
+
 
 
 

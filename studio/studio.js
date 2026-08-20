@@ -1,6 +1,7 @@
 ﻿(function () {
   const STUDIO_CONFIG = window.LUMOS_STUDIO_CONFIG || {};
   const AUTHOR_PASSWORD = STUDIO_CONFIG.password || "";
+  const HAS_AUTHOR_PASSWORD = Boolean(AUTHOR_PASSWORD);
   const DRAFT_KEY = "lumos-admin-draft";
   const POST_INDEX_PATH = "data/posts.json";
   const $ = (id) => document.getElementById(id);
@@ -22,9 +23,7 @@
   }
 
   function requireAdminPassword() {
-    if (!AUTHOR_PASSWORD) {
-      throw new Error("找不到本機設定檔，作者密碼沒有載入。請建立 local-config.js，且不要 commit。");
-    }
+    return HAS_AUTHOR_PASSWORD;
   }
 
   function setBusy(button, busy, busyText) {
@@ -52,6 +51,14 @@
     ["owner", "repo", "branch", "token"].forEach((id) => {
       if (!field(id)) throw new Error(`請填 ${id}。`);
     });
+  }
+
+  function hydratePortableSettings() {
+    if ($("communityEndpoint") && STUDIO_CONFIG.communityEndpoint) $("communityEndpoint").value = STUDIO_CONFIG.communityEndpoint;
+    if ($("communityAdminToken") && STUDIO_CONFIG.communityAdminToken) $("communityAdminToken").value = STUDIO_CONFIG.communityAdminToken;
+    if (!HAS_AUTHOR_PASSWORD && $("lockMessage")) {
+      $("lockMessage").textContent = "外出模式：可直接進入。真正發布或讀取私密資料時，請在裡面手動填 token。";
+    }
   }
 
   function escapeHtml(value) {
@@ -343,6 +350,7 @@
     const excerpt = (field("excerpt") || plainTextFromContent(content, mode).replace(/\s+/g, " ").trim()).slice(0, 120);
     const tagHtml = tags.map((tag) => `<a href="../../tags/?tag=${encodeURIComponent(tag)}">${escapeHtml(tag)}</a>`).join("");
     const sourceJson = JSON.stringify({ mode, content }).replaceAll("<", "\\u003c");
+    const computedCoverClass = coverClass(category);
 
     return {
       slug,
@@ -356,7 +364,7 @@
         excerpt,
         cover,
         coverLabel: tags[0] || category || "文章",
-        coverClass: coverClass(category)
+        coverClass: computedCoverClass
       },
       html: `<!DOCTYPE html>
 <html lang="zh-TW">
@@ -365,21 +373,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
   <link rel="icon" type="image/ico" sizes="32x32" href="../../images/favicon.ico">
   <link rel="stylesheet" href="../../css/app.css?v=0.2.5">
-  <link rel="stylesheet" href="../../css/lumos.css?v=1.5">
+  <link rel="stylesheet" href="../../css/lumos.css?v=1.6">
   <title>${escapeHtml(title)} | Lumos</title>
 </head>
-<body class="loaded">
+<body class="loaded post-page">
+  <header class="post-full-hero" style="--post-cover:url('../../${escapeHtml(cover)}')" data-post-cover="${escapeAttr(cover)}" data-category="${escapeAttr(category)}" data-cover-class="${escapeAttr(computedCoverClass)}">
+    <div class="hero-copy">
+      <h1 class="title">${escapeHtml(title)}</h1>
+      <div class="meta"><span class="item"><i class="ic i-calendar"></i> ${escapeHtml(date)}</span> <span class="item"><i class="ic i-flag"></i> ${escapeHtml(category)}</span></div>
+      <div class="tag-list">${tagHtml}</div>
+    </div>
+    <div class="hero-waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18v44h-352z"/></defs>
+        <g class="parallax"><use href="#gentle-wave" x="48" y="0"/><use href="#gentle-wave" x="48" y="3"/><use href="#gentle-wave" x="48" y="5"/><use href="#gentle-wave" x="48" y="7"/></g>
+      </svg>
+    </div>
+  </header>
   <main>
     <div class="inner single-column">
       <div id="main">
         <article class="post block">
-          <header class="post-hero" style="--post-cover:url('../../${escapeHtml(cover)}')">
-            <div>
-              <h1 class="title">${escapeHtml(title)}</h1>
-              <div class="meta"><span class="item"><i class="ic i-calendar"></i> ${escapeHtml(date)}</span> <span class="item"><i class="ic i-flag"></i> ${escapeHtml(category)}</span></div>
-              <div class="tag-list">${tagHtml}</div>
-            </div>
-          </header>
           <div class="body md" data-content-mode="${escapeAttr(mode)}">
               ${renderedContent}
           </div>
@@ -389,7 +403,7 @@
       </div>
     </div>
   </main>
-  <script src="../../js/site.js?v=1.5"></script>
+  <script src="../../js/site.js?v=1.6"></script>
 </body>
 </html>`
     };
@@ -675,19 +689,16 @@
   window.addEventListener("error", (event) => setStatus(`管理台腳本錯誤：${event.message}`, "error"));
   window.addEventListener("unhandledrejection", (event) => setStatus(`管理台非同步錯誤：${event.reason?.message || event.reason}`, "error"));
 
+  hydratePortableSettings();
+
   $("unlock").addEventListener("click", async () => {
-    try {
-      requireAdminPassword();
-    } catch (error) {
-      $("lockMessage").textContent = error.message;
-      return;
-    }
-    if ($("password").value !== AUTHOR_PASSWORD) {
+    if (requireAdminPassword() && $("password").value !== AUTHOR_PASSWORD) {
       $("lockMessage").textContent = "密碼不對。請確認本機設定檔。";
       return;
     }
     lock.classList.add("hidden");
     workspace.classList.remove("hidden");
+    hydratePortableSettings();
     $("date").value = field("date") || today();
     setStatus("作者模式已開啟，正在讀取文章索引...");
     try {
@@ -782,10 +793,11 @@
       if (mode) mode.textContent = "未載入";
       return;
     }
-    const token = STUDIO_CONFIG.communityAdminToken || "";
+    const token = field("communityAdminToken") || STUDIO_CONFIG.communityAdminToken || "";
     const config = window.LumosCommunity.config || {};
-    if (STUDIO_CONFIG.communityEndpoint) {
-      config.endpoint = STUDIO_CONFIG.communityEndpoint;
+    const endpoint = field("communityEndpoint") || STUDIO_CONFIG.communityEndpoint || "";
+    if (endpoint) {
+      config.endpoint = endpoint;
       config.backend = "http";
     }
     if (mode) mode.textContent = config.backend === "http" && config.endpoint ? "遠端後端" : "本機測試";
