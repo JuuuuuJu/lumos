@@ -1,0 +1,7 @@
+name = "lumos-community"
+main = "backend/cloudflare-worker.mjs"
+compatibility_date = "2026-08-19"
+
+[[kv_namespaces]]
+binding = "LUMOS_KV"
+id = "eb1ce5e6eb604886a73ec684044c97b0"
